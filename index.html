@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Metropolitan Better Living Center — Document Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════ */
+/* CSS VARIABLES & RESET                                          */
+/* ═══════════════════════════════════════════════════════════════ */
+:root {
+  --navy: #1B4D6E;
+  --teal: #1A8A8A;
+  --teal-light: #2AADAD;
+  --teal-dark: #147070;
+  --sky: #E8F4F8;
+  --sky-deep: #D0EBF2;
+  --white: #FFFFFF;
+  --off-white: #F8FAFB;
+  --gray-100: #F1F5F8;
+  --gray-200: #E2E8ED;
+  --gray-300: #CBD4DC;
+  --gray-400: #9BA8B4;
+  --gray-500: #6B7C8A;
+  --gray-600: #4A5568;
+  --gray-700: #2D3748;
+  --gray-800: #1A202C;
+  --red: #C53030;
+  --red-light: #FED7D7;
+  --green: #2D8B4E;
+  --green-light: #C6F6D5;
+  --gold: #D4A843;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', -apple-system, sans-serif;
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--gray-700);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* BACKGROUND PATTERN                                              */
+/* ═══════════════════════════════════════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(26,138,138,0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(27,77,110,0.04) 0%, transparent 50%);
+  pointer-events: none; z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* HEADER                                                          */
+/* ═══════════════════════════════════════════════════════════════ */
+.app-header {
+  background: linear-gradient(135deg, var(--navy) 0%, #1a5a7a 50%, var(--teal-dark) 100%);
+  padding: 0;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: var(--shadow-lg);
+}
+
+.header-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 16px 24px;
+  display: flex; align-items: center; gap: 20px;
+}
+
+.header-logo {
+  height: 60px; width: auto;
+  border-radius: 8px;
+  background: white;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.header-text { color: white; }
+.header-text h1 {
+  font-family: var(--font-display);
+  font-size: clamp(16px, 3.5vw, 22px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+.header-text p {
+  font-size: clamp(11px, 2vw, 13px);
+  opacity: 0.85;
+  font-weight: 300;
+  margin-top: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* NAVIGATION TABS                                                 */
+/* ═══════════════════════════════════════════════════════════════ */
+.nav-bar {
+  background: white;
+  border-bottom: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-sm);
+  position: sticky; top: 92px; z-index: 99;
+}
+
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0 12px;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+
+.nav-tab {
+  padding: 14px 18px;
+  font-size: 13px; font-weight: 600;
+  color: var(--gray-500);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  transition: var(--transition);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-tab:hover { color: var(--teal); }
+.nav-tab.active {
+  color: var(--teal);
+  border-bottom-color: var(--teal);
+}
+
+.nav-tab .tab-icon {
+  display: inline-block; margin-right: 6px; font-size: 15px;
+}
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* MAIN CONTENT AREA                                               */
+/* ═══════════════════════════════════════════════════════════════ */
+.main-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px 100px;
+  position: relative; z-index: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* DASHBOARD VIEW                                                  */
+/* ═══════════════════════════════════════════════════════════════ */
+.dashboard-hero {
+  text-align: center;
+  padding: 40px 20px 30px;
+}
+.dashboard-hero img {
+  height: 100px; margin-bottom: 16px;
+  border-radius: 12px; background: white; padding: 8px;
+  box-shadow: var(--shadow-md);
+}
+.dashboard-hero h2 {
+  font-family: var(--font-display);
+  font-size: 28px; color: var(--navy);
+  margin-bottom: 6px;
+}
+.dashboard-hero p {
+  color: var(--gray-500); font-size: 15px; max-width: 500px; margin: 0 auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.form-card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 20px;
+  border: 1px solid var(--gray-200);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex; align-items: flex-start; gap: 14px;
+  -webkit-tap-highlight-color: transparent;
+}
+.form-card:hover {
+  border-color: var(--teal-light);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.form-card:active { transform: translateY(0); }
+
+.form-card-icon {
+  width: 44px; height: 44px;
+  background: var(--sky);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+  color: var(--teal);
+}
+
+.form-card-text h3 {
+  font-size: 14px; font-weight: 700;
+  color: var(--gray-800); margin-bottom: 4px;
+}
+.form-card-text p {
+  font-size: 12px; color: var(--gray-400); line-height: 1.4;
+}
+
+.form-card-badge {
+  margin-left: auto;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0; align-self: center;
+}
+.badge-required { background: var(--red-light); color: var(--red); }
+.badge-optional { background: var(--green-light); color: var(--green); }
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* FORM VIEWS                                                      */
+/* ═══════════════════════════════════════════════════════════════ */
+.form-view { display: none; }
+.form-view.active { display: block; animation: fadeIn 0.3s ease; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-header {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 24px; padding-bottom: 16px;
+  border-bottom: 2px solid var(--sky);
+}
+.form-header .back-btn {
+  width: 40px; height: 40px;
+  background: var(--sky);
+  border: none; border-radius: var(--radius-sm);
+  cursor: pointer; font-size: 20px; color: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition); flex-shrink: 0;
+}
+.form-header .back-btn:hover { background: var(--sky-deep); }
+.form-header h2 {
+  font-family: var(--font-display);
+  font-size: 22px; color: var(--navy);
+}
+.form-header p { font-size: 13px; color: var(--gray-400); margin-top: 2px; }
+
+/* FORM CARD CONTAINER */
+.form-container {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-200);
+  overflow: hidden;
+}
+
+.form-section {
+  padding: 24px;
+  border-bottom: 1px solid var(--gray-100);
+}
+.form-section:last-child { border-bottom: none; }
+
+.form-section-title {
+  font-family: var(--font-display);
+  font-size: 16px; color: var(--teal-dark);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--sky);
+  display: flex; align-items: center; gap: 8px;
+}
+.form-section-title .sec-icon { font-size: 18px; }
+
+/* FORM FIELDS */
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.field-row:last-child { margin-bottom: 0; }
+
+.field-group {
+  display: flex; flex-direction: column;
+}
+
+.field-group label {
+  font-size: 12px; font-weight: 600;
+  color: var(--gray-600);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.field-group label .req { color: var(--red); }
+
+.field-group input,
+.field-group select,
+.field-group textarea {
+  padding: 10px 14px;
+  border: 1.5px solid var(--gray-300);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--gray-800);
+  background: var(--off-white);
+  transition: var(--transition);
+  width: 100%;
+}
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(26,138,138,0.12);
+  background: white;
+}
+
+.field-group textarea { resize: vertical; min-height: 80px; }
+.field-group select { cursor: pointer; }
+
+/* Checkbox & Radio groups */
+.check-group {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  margin-top: 4px;
+}
+.check-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 14px; color: var(--gray-600);
+  cursor: pointer;
+}
+.check-item input { width: 18px; height: 18px; accent-color: var(--teal); cursor: pointer; }
+
+/* Signature area */
+.signature-area {
+  border: 2px dashed var(--gray-300);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  text-align: center;
+  background: var(--gray-100);
+  margin-top: 4px;
+  position: relative;
+  min-height: 120px;
+}
+.signature-area canvas {
+  border: none;
+  cursor: crosshair;
+  touch-action: none;
+  width: 100%;
+  height: 100px;
+  display: block;
+}
+.signature-area .sig-label {
+  font-size: 11px; color: var(--gray-400);
+  margin-top: 6px;
+}
+.sig-clear {
+  position: absolute; top: 8px; right: 8px;
+  background: var(--red); color: white;
+  border: none; border-radius: 4px;
+  padding: 4px 10px; font-size: 11px;
+  cursor: pointer; font-weight: 600;
+}
+
+/* LEGAL TEXT */
+.legal-text {
+  background: var(--gray-100);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  font-size: 12px; line-height: 1.7;
+  color: var(--gray-600);
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid var(--gray-200);
+  margin-bottom: 12px;
+}
+
+/* Submit area */
+.form-actions {
+  padding: 24px;
+  background: var(--sky);
+  display: flex; gap: 12px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 14px; font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+  color: white;
+}
+.btn-primary:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.btn-secondary {
+  background: white;
+  color: var(--gray-600);
+  border-color: var(--gray-300);
+}
+.btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* SETTINGS VIEW                                                   */
+/* ═══════════════════════════════════════════════════════════════ */
+.settings-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-200);
+  padding: 28px;
+  margin-bottom: 20px;
+}
+.settings-card h3 {
+  font-family: var(--font-display);
+  font-size: 18px; color: var(--navy);
+  margin-bottom: 16px;
+}
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* TOAST                                                           */
+/* ═══════════════════════════════════════════════════════════════ */
+.toast {
+  position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+  background: var(--gray-800); color: white;
+  padding: 14px 28px; border-radius: 50px;
+  font-size: 14px; font-weight: 500;
+  box-shadow: var(--shadow-xl);
+  z-index: 1000;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s, bottom 0.3s;
+}
+.toast.show { opacity: 1; bottom: 40px; pointer-events: auto; }
+.toast.success { background: var(--green); }
+.toast.error { background: var(--red); }
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* PROGRESS BAR                                                    */
+/* ═══════════════════════════════════════════════════════════════ */
+.progress-bar {
+  height: 4px; background: var(--gray-200);
+  border-radius: 2px; margin: 12px 0 20px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%; background: linear-gradient(90deg, var(--teal), var(--teal-light));
+  border-radius: 2px; transition: width 0.4s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* RESPONSIVE                                                      */
+/* ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .header-inner { padding: 12px 16px; gap: 12px; }
+  .header-logo { height: 45px; }
+  .nav-tab { padding: 12px 14px; font-size: 12px; }
+  .main-content { padding: 16px 12px 80px; }
+  .form-section { padding: 18px; }
+  .field-row { grid-template-columns: 1fr; gap: 12px; }
+  .form-actions { flex-direction: column; }
+  .btn { width: 100%; text-align: center; }
+  .form-grid { grid-template-columns: 1fr; }
+  .dashboard-hero h2 { font-size: 22px; }
+}
+
+/* Print styles */
+@media print {
+  .app-header, .nav-bar, .form-actions, .back-btn { display: none !important; }
+  .form-container { box-shadow: none; border: 1px solid #ccc; }
+  body { background: white; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- HEADER                                                         -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<header class="app-header">
+  <div class="header-inner">
+    <img src="data:image/png;base64," alt="MBLC Logo" class="header-logo">
+    <div class="header-text">
+      <h1>Metropolitan Better Living Center, Inc.</h1>
+      <p>Adult Day Center &mdash; Digital Document Portal</p>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- NAVIGATION                                                     -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <div class="nav-tab active" onclick="showView('dashboard')" data-view="dashboard">
+      <span class="tab-icon">&#x1f3e0;</span>Home
+    </div>
+    <div class="nav-tab" onclick="showView('enrollment')" data-view="enrollment">
+      <span class="tab-icon">&#x1f4cb;</span>Enrollment
+    </div>
+    <div class="nav-tab" onclick="showView('medical')" data-view="medical">
+      <span class="tab-icon">&#x1fa7a;</span>Medical
+    </div>
+    <div class="nav-tab" onclick="showView('emergency')" data-view="emergency">
+      <span class="tab-icon">&#x1f6a8;</span>Emergency
+    </div>
+    <div class="nav-tab" onclick="showView('medication')" data-view="medication">
+      <span class="tab-icon">&#x1f48a;</span>Medications
+    </div>
+    <div class="nav-tab" onclick="showView('consent')" data-view="consent">
+      <span class="tab-icon">&#x2705;</span>Consents
+    </div>
+    <div class="nav-tab" onclick="showView('liability')" data-view="liability">
+      <span class="tab-icon">&#x1f6e1;</span>Liability
+    </div>
+    <div class="nav-tab" onclick="showView('hipaa')" data-view="hipaa">
+      <span class="tab-icon">&#x1f512;</span>HIPAA
+    </div>
+    <div class="nav-tab" onclick="showView('transport')" data-view="transport">
+      <span class="tab-icon">&#x1f698;</span>Transport
+    </div>
+    <div class="nav-tab" onclick="showView('photo')" data-view="photo">
+      <span class="tab-icon">&#x1f4f7;</span>Photo Release
+    </div>
+    <div class="nav-tab" onclick="showView('settings')" data-view="settings">
+      <span class="tab-icon">&#x2699;</span>Settings
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- MAIN CONTENT                                                   -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<main class="main-content">
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- DASHBOARD                                                      -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="form-view active" id="view-dashboard">
+  <div class="dashboard-hero">
+    <img src="data:image/png;base64," alt="Logo">
+    <h2>Welcome to Our Document Portal</h2>
+    <p>Complete the required enrollment forms below. All forms can be filled out on your tablet and submitted electronically.</p>
+  </div>
+
+  <div class="form-grid">
+    <div class="form-card" onclick="showView('enrollment')">
+      <div class="form-card-icon">&#x1f4cb;</div>
+      <div class="form-card-text">
+        <h3>Participant Enrollment</h3>
+        <p>Registration, contact info, and personal details</p>
+      </div>
+      <span class="form-card-badge badge-required">Required</span>
+    </div>
+    <div class="form-card" onclick="showView('medical')">
+      <div class="form-card-icon">&#x1fa7a;</div>
+      <div class="form-card-text">
+        <h3>Medical History &amp; Clearance</h3>
+        <p>Health conditions, physician info, and medical history</p>
+      </div>
+      <span class="form-card-badge badge-required">Required</span>
+    </div>
+    <div class="form-card" onclick="showView('emergency')">
+      <div class="form-card-icon">&#x1f6a8;</div>
+      <div class="form-card-text">
+        <h3>Emergency Contacts</h3>
+        <p>Emergency contacts and treatment authorization</p>
+      </div>
+      <span class="form-card-badge badge-required">Required</span>
+    </div>
+    <div class="form-card" onclick="showView('medication')">
+      <div class="form-card-icon">&#x1f48a;</div>
+      <div class="form-card-text">
+        <h3>Medication Authorization</h3>
+        <p>Current medications and administration consent</p>
+      </div>
+      <span class="form-card-badge badge-required">Required</span>
+    </div>
+    <div class="form-card" onclick="showView('consent')">
+      <div class="form-card-icon">&#x2705;</div>
+      <div class="form-card-text">
+        <h3>Informed Consent for Services</h3>
+        <p>Consent to participate in program services</p>
+      </div>
+      <span class="form-card-badge badge-required">Required</span>
+    </div>
+    <div class="form-card" onclick="showView('liability')">
+      <div class="form-card-icon">&#x1f6e1;</div>
+      <div class="form-card-text">
+        <h3>Liability Waiver</h3>
+        <p>Assumption of risk and release of liability</p>
+      </div>
+      <span class="form-card-badge badge-required">Required</span>
+    </div>
+    <div class="form-card" onclick="showView('hipaa')">
+      <div class="form-card-icon">&#x1f512;</div>
+      <div class="form-card-text">
+        <h3>HIPAA Privacy Acknowledgment</h3>
+        <p>Privacy practices notice and authorization</p>
+      </div>
+      <span class="form-card-badge badge-required">Required</span>
+    </div>
+    <div class="form-card" onclick="showView('transport')">
+      <div class="form-card-icon">&#x1f698;</div>
+      <div class="form-card-text">
+        <h3>Transportation Authorization</h3>
+        <p>Consent for facility-provided transportation</p>
+      </div>
+      <span class="form-card-badge badge-optional">Optional</span>
+    </div>
+    <div class="form-card" onclick="showView('photo')">
+      <div class="form-card-icon">&#x1f4f7;</div>
+      <div class="form-card-text">
+        <h3>Photo / Media Release</h3>
+        <p>Consent for photos, videos, and media use</p>
+      </div>
+      <span class="form-card-badge badge-optional">Optional</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- FORM 1: ENROLLMENT                                             -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="form-view" id="view-enrollment">
+  <div class="form-header">
+    <button class="back-btn" onclick="showView('dashboard')">&larr;</button>
+    <div>
+      <h2>Participant Enrollment Form</h2>
+      <p>Metropolitan Better Living Center, Inc.</p>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="prog-enrollment" style="width:0%"></div></div>
+  <form class="form-container" id="form-enrollment" onsubmit="submitForm(event,'enrollment')">
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f464;</span> Participant Information</div>
+      <div class="field-row">
+        <div class="field-group"><label>First Name <span class="req">*</span></label><input type="text" name="first_name" required></div>
+        <div class="field-group"><label>Middle Name</label><input type="text" name="middle_name"></div>
+        <div class="field-group"><label>Last Name <span class="req">*</span></label><input type="text" name="last_name" required></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Preferred Name</label><input type="text" name="preferred_name"></div>
+        <div class="field-group"><label>Date of Birth <span class="req">*</span></label><input type="date" name="dob" required></div>
+        <div class="field-group"><label>Gender <span class="req">*</span></label>
+          <select name="gender" required><option value="">Select...</option><option>Male</option><option>Female</option><option>Other</option><option>Prefer not to say</option></select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Social Security # (last 4)</label><input type="text" name="ssn_last4" maxlength="4" pattern="[0-9]{4}" placeholder="XXXX"></div>
+        <div class="field-group"><label>Marital Status</label>
+          <select name="marital_status"><option value="">Select...</option><option>Single</option><option>Married</option><option>Widowed</option><option>Divorced</option><option>Separated</option></select>
+        </div>
+        <div class="field-group"><label>Primary Language</label><input type="text" name="language" value="English"></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f3e0;</span> Address &amp; Contact</div>
+      <div class="field-row">
+        <div class="field-group" style="grid-column:1/-1"><label>Street Address <span class="req">*</span></label><input type="text" name="address" required></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>City <span class="req">*</span></label><input type="text" name="city" required></div>
+        <div class="field-group"><label>State <span class="req">*</span></label><input type="text" name="state" required></div>
+        <div class="field-group"><label>ZIP Code <span class="req">*</span></label><input type="text" name="zip" required></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Home Phone</label><input type="tel" name="home_phone"></div>
+        <div class="field-group"><label>Cell Phone <span class="req">*</span></label><input type="tel" name="cell_phone" required></div>
+        <div class="field-group"><label>Email Address</label><input type="email" name="email"></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f46a;</span> Primary Caregiver / Family Contact</div>
+      <div class="field-row">
+        <div class="field-group"><label>Full Name <span class="req">*</span></label><input type="text" name="caregiver_name" required></div>
+        <div class="field-group"><label>Relationship <span class="req">*</span></label><input type="text" name="caregiver_relationship" required></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Phone <span class="req">*</span></label><input type="tel" name="caregiver_phone" required></div>
+        <div class="field-group"><label>Email</label><input type="email" name="caregiver_email"></div>
+        <div class="field-group"><label>Address (if different)</label><input type="text" name="caregiver_address"></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f4b3;</span> Insurance &amp; Payment</div>
+      <div class="field-row">
+        <div class="field-group"><label>Primary Insurance</label><input type="text" name="insurance_primary"></div>
+        <div class="field-group"><label>Policy / Member ID</label><input type="text" name="insurance_id"></div>
+        <div class="field-group"><label>Group Number</label><input type="text" name="insurance_group"></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Medicare ID</label><input type="text" name="medicare_id"></div>
+        <div class="field-group"><label>Medicaid ID</label><input type="text" name="medicaid_id"></div>
+        <div class="field-group"><label>Veteran Status</label>
+          <select name="veteran"><option value="">Select...</option><option>Yes</option><option>No</option></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x270d;</span> Signature</div>
+      <div class="field-row">
+        <div class="field-group"><label>Participant / Guardian Signature <span class="req">*</span></label>
+          <div class="signature-area">
+            <canvas id="sig-enrollment" width="700" height="100"></canvas>
+            <button type="button" class="sig-clear" onclick="clearSig('sig-enrollment')">Clear</button>
+            <div class="sig-label">Sign with finger or stylus above</div>
+          </div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Printed Name <span class="req">*</span></label><input type="text" name="sig_name" required></div>
+        <div class="field-group"><label>Date <span class="req">*</span></label><input type="date" name="sig_date" required></div>
+        <div class="field-group"><label>Relationship to Participant</label><input type="text" name="sig_relationship"></div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" onclick="saveDraft('enrollment')">Save Draft</button>
+      <button type="submit" class="btn btn-primary">Submit Enrollment &#x2192;</button>
+    </div>
+  </form>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- FORM 2: MEDICAL HISTORY                                        -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="form-view" id="view-medical">
+  <div class="form-header">
+    <button class="back-btn" onclick="showView('dashboard')">&larr;</button>
+    <div><h2>Medical History &amp; Physician Clearance</h2><p>Metropolitan Better Living Center, Inc.</p></div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="prog-medical" style="width:0%"></div></div>
+  <form class="form-container" id="form-medical" onsubmit="submitForm(event,'medical')">
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f468;&#x200d;&#x2695;</span> Primary Physician</div>
+      <div class="field-row">
+        <div class="field-group"><label>Physician Name <span class="req">*</span></label><input type="text" name="physician_name" required></div>
+        <div class="field-group"><label>Phone <span class="req">*</span></label><input type="tel" name="physician_phone" required></div>
+        <div class="field-group"><label>Fax</label><input type="tel" name="physician_fax"></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group" style="grid-column:1/-1"><label>Address</label><input type="text" name="physician_address"></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1fa7a;</span> Medical Conditions</div>
+      <p style="font-size:13px;color:var(--gray-500);margin-bottom:12px">Check all conditions that apply to the participant:</p>
+      <div class="check-group">
+        <label class="check-item"><input type="checkbox" name="cond_diabetes"> Diabetes</label>
+        <label class="check-item"><input type="checkbox" name="cond_heart"> Heart Disease</label>
+        <label class="check-item"><input type="checkbox" name="cond_hypertension"> Hypertension</label>
+        <label class="check-item"><input type="checkbox" name="cond_stroke"> Stroke</label>
+        <label class="check-item"><input type="checkbox" name="cond_dementia"> Dementia / Alzheimer's</label>
+        <label class="check-item"><input type="checkbox" name="cond_parkinsons"> Parkinson's</label>
+        <label class="check-item"><input type="checkbox" name="cond_arthritis"> Arthritis</label>
+        <label class="check-item"><input type="checkbox" name="cond_copd"> COPD / Lung Disease</label>
+        <label class="check-item"><input type="checkbox" name="cond_cancer"> Cancer</label>
+        <label class="check-item"><input type="checkbox" name="cond_seizures"> Seizure Disorder</label>
+        <label class="check-item"><input type="checkbox" name="cond_depression"> Depression</label>
+        <label class="check-item"><input type="checkbox" name="cond_anxiety"> Anxiety</label>
+        <label class="check-item"><input type="checkbox" name="cond_vision"> Vision Impairment</label>
+        <label class="check-item"><input type="checkbox" name="cond_hearing"> Hearing Impairment</label>
+        <label class="check-item"><input type="checkbox" name="cond_incontinence"> Incontinence</label>
+        <label class="check-item"><input type="checkbox" name="cond_fall_risk"> Fall Risk</label>
+      </div>
+      <div class="field-row" style="margin-top:16px">
+        <div class="field-group" style="grid-column:1/-1"><label>Other Medical Conditions / Details</label><textarea name="cond_other" rows="3" placeholder="Please describe any additional conditions..."></textarea></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x26a0;</span> Allergies</div>
+      <div class="field-row">
+        <div class="field-group"><label>Drug Allergies</label><textarea name="allergies_drug" rows="2" placeholder="List all drug allergies..."></textarea></div>
+        <div class="field-group"><label>Food Allergies</label><textarea name="allergies_food" rows="2" placeholder="List all food allergies..."></textarea></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Environmental / Other Allergies</label><textarea name="allergies_other" rows="2" placeholder="Latex, bee stings, etc..."></textarea></div>
+        <div class="field-group"><label>Dietary Restrictions / Special Diet</label><textarea name="diet_restrictions" rows="2" placeholder="Diabetic diet, low sodium, pureed, etc..."></textarea></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f6b6;</span> Functional Status</div>
+      <div class="field-row">
+        <div class="field-group"><label>Mobility / Ambulation</label>
+          <select name="mobility"><option value="">Select...</option><option>Independent</option><option>Walker</option><option>Cane</option><option>Wheelchair</option><option>Wheelchair - needs assistance</option><option>Bedbound</option></select>
+        </div>
+        <div class="field-group"><label>Continence</label>
+          <select name="continence"><option value="">Select...</option><option>Independent</option><option>Needs reminding</option><option>Wears briefs/pads</option><option>Catheter</option></select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Cognitive Status</label>
+          <select name="cognitive"><option value="">Select...</option><option>Alert &amp; oriented</option><option>Mild confusion</option><option>Moderate impairment</option><option>Severe impairment</option></select>
+        </div>
+        <div class="field-group"><label>Communication</label>
+          <select name="communication"><option value="">Select...</option><option>Verbal - clear</option><option>Verbal - limited</option><option>Non-verbal</option><option>Uses communication device</option></select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group" style="grid-column:1/-1"><label>Assistive Devices Used</label><input type="text" name="assistive_devices" placeholder="Glasses, hearing aids, dentures, oxygen, etc..."></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x270d;</span> Signature</div>
+      <div class="field-row">
+        <div class="field-group"><label>Signature <span class="req">*</span></label>
+          <div class="signature-area"><canvas id="sig-medical" width="700" height="100"></canvas><button type="button" class="sig-clear" onclick="clearSig('sig-medical')">Clear</button><div class="sig-label">Sign with finger or stylus above</div></div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Printed Name <span class="req">*</span></label><input type="text" name="sig_name" required></div>
+        <div class="field-group"><label>Date <span class="req">*</span></label><input type="date" name="sig_date" required></div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" onclick="saveDraft('medical')">Save Draft</button>
+      <button type="submit" class="btn btn-primary">Submit Medical Form &#x2192;</button>
+    </div>
+  </form>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- FORM 3: EMERGENCY CONTACTS                                     -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="form-view" id="view-emergency">
+  <div class="form-header">
+    <button class="back-btn" onclick="showView('dashboard')">&larr;</button>
+    <div><h2>Emergency Contact &amp; Treatment Authorization</h2><p>Metropolitan Better Living Center, Inc.</p></div>
+  </div>
+  <form class="form-container" id="form-emergency" onsubmit="submitForm(event,'emergency')">
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f6a8;</span> Emergency Contact #1 (Primary)</div>
+      <div class="field-row">
+        <div class="field-group"><label>Full Name <span class="req">*</span></label><input type="text" name="ec1_name" required></div>
+        <div class="field-group"><label>Relationship <span class="req">*</span></label><input type="text" name="ec1_relationship" required></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Home Phone</label><input type="tel" name="ec1_home"></div>
+        <div class="field-group"><label>Cell Phone <span class="req">*</span></label><input type="tel" name="ec1_cell" required></div>
+        <div class="field-group"><label>Work Phone</label><input type="tel" name="ec1_work"></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group" style="grid-column:1/-1"><label>Address</label><input type="text" name="ec1_address"></div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f6a8;</span> Emergency Contact #2 (Secondary)</div>
+      <div class="field-row">
+        <div class="field-group"><label>Full Name</label><input type="text" name="ec2_name"></div>
+        <div class="field-group"><label>Relationship</label><input type="text" name="ec2_relationship"></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Cell Phone</label><input type="tel" name="ec2_cell"></div>
+        <div class="field-group"><label>Work Phone</label><input type="tel" name="ec2_work"></div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f6a8;</span> Emergency Contact #3 (Tertiary)</div>
+      <div class="field-row">
+        <div class="field-group"><label>Full Name</label><input type="text" name="ec3_name"></div>
+        <div class="field-group"><label>Relationship</label><input type="text" name="ec3_relationship"></div>
+        <div class="field-group"><label>Cell Phone</label><input type="tel" name="ec3_cell"></div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f3e5;</span> Hospital &amp; Physician Preference</div>
+      <div class="field-row">
+        <div class="field-group"><label>Preferred Hospital / ER</label><input type="text" name="preferred_hospital"></div>
+        <div class="field-group"><label>Primary Physician</label><input type="text" name="pcp_name"></div>
+        <div class="field-group"><label>Physician Phone</label><input type="tel" name="pcp_phone"></div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x2695;</span> Emergency Medical Treatment Authorization</div>
+      <div class="legal-text">
+        I, the undersigned, being the legally authorized representative of the above-named participant, hereby authorize Metropolitan Better Living Center, Inc. to seek emergency medical treatment, including but not limited to calling 911 and/or transporting the participant to the nearest emergency medical facility, in the event that the participant requires emergency care and the designated emergency contacts listed above cannot be reached in a timely manner. I understand that every reasonable effort will be made to contact the emergency contacts listed above before seeking outside emergency medical care. I agree to be responsible for any and all costs associated with emergency medical treatment.
+      </div>
+      <div class="check-group">
+        <label class="check-item"><input type="checkbox" name="auth_911" required> I authorize the center to call 911 in an emergency</label>
+      </div>
+      <div class="check-group" style="margin-top:8px">
+        <label class="check-item"><input type="checkbox" name="auth_transport" required> I authorize emergency transport to a medical facility</label>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x270d;</span> Signature</div>
+      <div class="field-row">
+        <div class="field-group"><label>Signature <span class="req">*</span></label>
+          <div class="signature-area"><canvas id="sig-emergency" width="700" height="100"></canvas><button type="button" class="sig-clear" onclick="clearSig('sig-emergency')">Clear</button><div class="sig-label">Sign with finger or stylus above</div></div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Printed Name <span class="req">*</span></label><input type="text" name="sig_name" required></div>
+        <div class="field-group"><label>Date <span class="req">*</span></label><input type="date" name="sig_date" required></div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" onclick="saveDraft('emergency')">Save Draft</button>
+      <button type="submit" class="btn btn-primary">Submit Emergency Form &#x2192;</button>
+    </div>
+  </form>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- FORM 4: MEDICATION AUTH                                        -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="form-view" id="view-medication">
+  <div class="form-header">
+    <button class="back-btn" onclick="showView('dashboard')">&larr;</button>
+    <div><h2>Medication Administration Authorization</h2><p>Metropolitan Better Living Center, Inc.</p></div>
+  </div>
+  <form class="form-container" id="form-medication" onsubmit="submitForm(event,'medication')">
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f464;</span> Participant</div>
+      <div class="field-row">
+        <div class="field-group"><label>Participant Name <span class="req">*</span></label><input type="text" name="participant_name" required></div>
+        <div class="field-group"><label>Date of Birth <span class="req">*</span></label><input type="date" name="dob" required></div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f48a;</span> Medication #1</div>
+      <div class="field-row">
+        <div class="field-group"><label>Medication Name</label><input type="text" name="med1_name"></div>
+        <div class="field-group"><label>Dosage</label><input type="text" name="med1_dose"></div>
+        <div class="field-group"><label>Frequency</label><input type="text" name="med1_freq" placeholder="e.g., Twice daily"></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Time(s) to Administer</label><input type="text" name="med1_time" placeholder="e.g., 8:00 AM, 2:00 PM"></div>
+        <div class="field-group"><label>Route</label>
+          <select name="med1_route"><option value="">Select...</option><option>Oral</option><option>Topical</option><option>Injection</option><option>Inhaled</option><option>Sublingual</option><option>Eye drops</option><option>Ear drops</option><option>Other</option></select>
+        </div>
+        <div class="field-group"><label>Prescribing Physician</label><input type="text" name="med1_doc"></div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f48a;</span> Medication #2</div>
+      <div class="field-row">
+        <div class="field-group"><label>Medication Name</label><input type="text" name="med2_name"></div>
+        <div class="field-group"><label>Dosage</label><input type="text" name="med2_dose"></div>
+        <div class="field-group"><label>Frequency</label><input type="text" name="med2_freq"></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Time(s) to Administer</label><input type="text" name="med2_time"></div>
+        <div class="field-group"><label>Route</label>
+          <select name="med2_route"><option value="">Select...</option><option>Oral</option><option>Topical</option><option>Injection</option><option>Inhaled</option><option>Sublingual</option><option>Eye drops</option><option>Ear drops</option><option>Other</option></select>
+        </div>
+        <div class="field-group"><label>Prescribing Physician</label><input type="text" name="med2_doc"></div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f48a;</span> Medication #3</div>
+      <div class="field-row">
+        <div class="field-group"><label>Medication Name</label><input type="text" name="med3_name"></div>
+        <div class="field-group"><label>Dosage</label><input type="text" name="med3_dose"></div>
+        <div class="field-group"><label>Frequency</label><input type="text" name="med3_freq"></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Time(s) to Administer</label><input type="text" name="med3_time"></div>
+        <div class="field-group"><label>Route</label>
+          <select name="med3_route"><option value="">Select...</option><option>Oral</option><option>Topical</option><option>Injection</option><option>Inhaled</option><option>Sublingual</option><option>Eye drops</option><option>Ear drops</option><option>Other</option></select>
+        </div>
+        <div class="field-group"><label>Prescribing Physician</label><input type="text" name="med3_doc"></div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f48a;</span> Medications #4–8 (Additional)</div>
+      <div class="field-row"><div class="field-group" style="grid-column:1/-1"><label>List Additional Medications (Name, Dose, Frequency, Time)</label><textarea name="meds_additional" rows="5" placeholder="Medication 4: ...&#10;Medication 5: ...&#10;Medication 6: ..."></textarea></div></div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x2705;</span> Authorization</div>
+      <div class="legal-text">I hereby authorize Metropolitan Better Living Center, Inc. staff to administer the above-listed medications to the named participant according to the prescribed dosage, frequency, and schedule as ordered by the prescribing physician(s). I understand that medications must be provided in their original pharmacy-labeled containers. I agree to notify the center immediately of any changes to the participant's medication regimen.</div>
+      <div class="check-group">
+        <label class="check-item"><input type="checkbox" name="auth_meds" required> I authorize medication administration as described above</label>
+      </div>
+      <div class="check-group" style="margin-top:8px">
+        <label class="check-item"><input type="checkbox" name="auth_otc"> I authorize administration of OTC medications (Tylenol, antacids) as needed per physician approval</label>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x270d;</span> Signature</div>
+      <div class="field-row"><div class="field-group"><label>Signature <span class="req">*</span></label><div class="signature-area"><canvas id="sig-medication" width="700" height="100"></canvas><button type="button" class="sig-clear" onclick="clearSig('sig-medication')">Clear</button><div class="sig-label">Sign with finger or stylus above</div></div></div></div>
+      <div class="field-row">
+        <div class="field-group"><label>Printed Name <span class="req">*</span></label><input type="text" name="sig_name" required></div>
+        <div class="field-group"><label>Date <span class="req">*</span></label><input type="date" name="sig_date" required></div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" onclick="saveDraft('medication')">Save Draft</button>
+      <button type="submit" class="btn btn-primary">Submit Medication Auth &#x2192;</button>
+    </div>
+  </form>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- FORM 5: INFORMED CONSENT                                       -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="form-view" id="view-consent">
+  <div class="form-header">
+    <button class="back-btn" onclick="showView('dashboard')">&larr;</button>
+    <div><h2>Informed Consent for Services</h2><p>Metropolitan Better Living Center, Inc.</p></div>
+  </div>
+  <form class="form-container" id="form-consent" onsubmit="submitForm(event,'consent')">
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f4c4;</span> Consent Agreement</div>
+      <div class="field-row">
+        <div class="field-group"><label>Participant Name <span class="req">*</span></label><input type="text" name="participant_name" required></div>
+        <div class="field-group"><label>Date of Birth</label><input type="date" name="dob"></div>
+      </div>
+      <div class="legal-text" style="max-height:400px">
+        <p><strong>Metropolitan Better Living Center, Inc. — Informed Consent for Adult Day Program Services</strong></p><br>
+        <p>By signing below, I voluntarily consent to the enrollment and participation of the above-named individual in the Adult Day Program operated by Metropolitan Better Living Center, Inc. I understand and agree to the following:</p><br>
+        <p><strong>1. Services Provided:</strong> The center provides supervised group and individual activities, personal care assistance, meals and snacks, health monitoring, social services, therapeutic activities, and transportation (if applicable).</p><br>
+        <p><strong>2. Hours of Operation:</strong> The program operates during designated hours. Participants must be dropped off and picked up within scheduled times.</p><br>
+        <p><strong>3. Care Plan:</strong> An individualized care plan will be developed based on the participant's needs, preferences, and abilities. The care plan will be reviewed and updated periodically.</p><br>
+        <p><strong>4. Right to Refuse:</strong> The participant retains the right to refuse any service, treatment, or activity offered by the center.</p><br>
+        <p><strong>5. Behavior Policy:</strong> The center maintains a safe environment. Behavior that endangers the participant or others may result in suspension or discharge from the program.</p><br>
+        <p><strong>6. Personal Belongings:</strong> The center is not responsible for lost, stolen, or damaged personal items. Participants are discouraged from bringing valuables.</p><br>
+        <p><strong>7. Communication:</strong> Staff will communicate with the primary caregiver regarding the participant's well-being, incidents, and any changes in condition.</p><br>
+        <p><strong>8. Fees:</strong> Program fees are outlined in the Participant Agreement. Payment is due according to the agreed-upon schedule.</p><br>
+        <p><strong>9. Discharge:</strong> Either party may terminate participation with appropriate notice as outlined in the Participant Agreement.</p>
+      </div>
+      <div class="check-group" style="margin-top:12px">
+        <label class="check-item"><input type="checkbox" name="consent_agree" required> I have read, understand, and agree to the terms above</label>
+      </div>
+      <div class="check-group" style="margin-top:8px">
+        <label class="check-item"><input type="checkbox" name="consent_rights" required> I acknowledge I have received a copy of the Participant Rights &amp; Responsibilities</label>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x270d;</span> Signature</div>
+      <div class="field-row"><div class="field-group"><label>Signature <span class="req">*</span></label><div class="signature-area"><canvas id="sig-consent" width="700" height="100"></canvas><button type="button" class="sig-clear" onclick="clearSig('sig-consent')">Clear</button><div class="sig-label">Sign with finger or stylus above</div></div></div></div>
+      <div class="field-row">
+        <div class="field-group"><label>Printed Name <span class="req">*</span></label><input type="text" name="sig_name" required></div>
+        <div class="field-group"><label>Date <span class="req">*</span></label><input type="date" name="sig_date" required></div>
+        <div class="field-group"><label>Relationship</label><input type="text" name="sig_rel"></div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" onclick="saveDraft('consent')">Save Draft</button>
+      <button type="submit" class="btn btn-primary">Submit Consent &#x2192;</button>
+    </div>
+  </form>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- FORM 6: LIABILITY WAIVER                                       -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="form-view" id="view-liability">
+  <div class="form-header">
+    <button class="back-btn" onclick="showView('dashboard')">&larr;</button>
+    <div><h2>Liability Waiver &amp; Release</h2><p>Metropolitan Better Living Center, Inc.</p></div>
+  </div>
+  <form class="form-container" id="form-liability" onsubmit="submitForm(event,'liability')">
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f6e1;</span> Waiver &amp; Release of Liability</div>
+      <div class="field-row">
+        <div class="field-group"><label>Participant Name <span class="req">*</span></label><input type="text" name="participant_name" required></div>
+        <div class="field-group"><label>Date of Birth</label><input type="date" name="dob"></div>
+      </div>
+      <div class="legal-text" style="max-height:400px">
+        <p><strong>ASSUMPTION OF RISK AND RELEASE OF LIABILITY</strong></p><br>
+        <p>I, the undersigned, in consideration of the participation of the above-named individual in the Adult Day Program operated by Metropolitan Better Living Center, Inc., do hereby acknowledge, understand, and agree to the following:</p><br>
+        <p><strong>1. Assumption of Risk:</strong> I understand that participation in an adult day program involves certain inherent risks including, but not limited to: falls, exposure to communicable illnesses, injury during activities or outings, interactions with other participants, and dietary risks. I voluntarily assume all such risks.</p><br>
+        <p><strong>2. Release:</strong> I hereby release, discharge, and hold harmless Metropolitan Better Living Center, Inc., its owners, officers, directors, employees, agents, and volunteers from any and all claims, demands, actions, or causes of action arising out of or related to any loss, damage, or injury that may be sustained by the participant during their participation in the program, except where such loss, damage, or injury is the direct result of gross negligence or willful misconduct by the center.</p><br>
+        <p><strong>3. Indemnification:</strong> I agree to indemnify and hold harmless Metropolitan Better Living Center, Inc. from any claims brought by or on behalf of the participant arising from the participant's attendance and participation in the program.</p><br>
+        <p><strong>4. Medical Authorization:</strong> In the event of a medical emergency, I authorize the center to take reasonable steps to provide emergency medical care, including calling emergency services.</p><br>
+        <p><strong>5. Acknowledgment:</strong> I have read this waiver carefully, understand its contents, and sign it voluntarily. I understand that this waiver does not exempt the center from liability for negligence.</p>
+      </div>
+      <div class="check-group" style="margin-top:12px">
+        <label class="check-item"><input type="checkbox" name="waiver_agree" required> I have read, understand, and agree to the Waiver &amp; Release of Liability</label>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x270d;</span> Signature</div>
+      <div class="field-row"><div class="field-group"><label>Signature <span class="req">*</span></label><div class="signature-area"><canvas id="sig-liability" width="700" height="100"></canvas><button type="button" class="sig-clear" onclick="clearSig('sig-liability')">Clear</button><div class="sig-label">Sign with finger or stylus above</div></div></div></div>
+      <div class="field-row">
+        <div class="field-group"><label>Printed Name <span class="req">*</span></label><input type="text" name="sig_name" required></div>
+        <div class="field-group"><label>Date <span class="req">*</span></label><input type="date" name="sig_date" required></div>
+        <div class="field-group"><label>Relationship</label><input type="text" name="sig_rel"></div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" onclick="saveDraft('liability')">Save Draft</button>
+      <button type="submit" class="btn btn-primary">Submit Liability Waiver &#x2192;</button>
+    </div>
+  </form>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- FORM 7: HIPAA                                                  -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="form-view" id="view-hipaa">
+  <div class="form-header">
+    <button class="back-btn" onclick="showView('dashboard')">&larr;</button>
+    <div><h2>HIPAA Privacy Acknowledgment</h2><p>Metropolitan Better Living Center, Inc.</p></div>
+  </div>
+  <form class="form-container" id="form-hipaa" onsubmit="submitForm(event,'hipaa')">
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f512;</span> Notice of Privacy Practices</div>
+      <div class="field-row">
+        <div class="field-group"><label>Participant Name <span class="req">*</span></label><input type="text" name="participant_name" required></div>
+        <div class="field-group"><label>Date of Birth</label><input type="date" name="dob"></div>
+      </div>
+      <div class="legal-text" style="max-height:350px">
+        <p><strong>NOTICE OF PRIVACY PRACTICES — HIPAA ACKNOWLEDGMENT</strong></p><br>
+        <p>Metropolitan Better Living Center, Inc. is committed to protecting the privacy and security of your health information in accordance with the Health Insurance Portability and Accountability Act (HIPAA) of 1996.</p><br>
+        <p><strong>How We Use Your Information:</strong> We may use and disclose your Protected Health Information (PHI) for the purposes of treatment, payment, and healthcare operations, including coordinating your care with physicians, specialists, and other healthcare providers; processing insurance claims; and conducting quality improvement activities.</p><br>
+        <p><strong>Your Rights:</strong> You have the right to request restrictions on certain uses and disclosures of your PHI; receive confidential communications; inspect and copy your health records; request amendments to your records; receive an accounting of disclosures; and receive a copy of this Notice.</p><br>
+        <p><strong>Our Obligations:</strong> We are required by law to maintain the privacy of your PHI, provide you with this Notice of our legal duties and privacy practices, and notify you in the event of a breach of unsecured PHI.</p><br>
+        <p><strong>Authorization:</strong> Uses and disclosures not covered by this Notice or applicable law will be made only with your written authorization, which you may revoke at any time.</p>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f4dd;</span> Authorization to Share Information</div>
+      <p style="font-size:13px;color:var(--gray-500);margin-bottom:12px">I authorize MBLC to share my/the participant's health information with the following individuals:</p>
+      <div class="field-row">
+        <div class="field-group"><label>Authorized Person #1</label><input type="text" name="hipaa_person1"></div>
+        <div class="field-group"><label>Relationship</label><input type="text" name="hipaa_rel1"></div>
+        <div class="field-group"><label>Phone</label><input type="tel" name="hipaa_phone1"></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Authorized Person #2</label><input type="text" name="hipaa_person2"></div>
+        <div class="field-group"><label>Relationship</label><input type="text" name="hipaa_rel2"></div>
+        <div class="field-group"><label>Phone</label><input type="tel" name="hipaa_phone2"></div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x2705;</span> Acknowledgment</div>
+      <div class="check-group">
+        <label class="check-item"><input type="checkbox" name="hipaa_received" required> I acknowledge that I have received a copy of the Notice of Privacy Practices</label>
+      </div>
+      <div class="check-group" style="margin-top:8px">
+        <label class="check-item"><input type="checkbox" name="hipaa_understand" required> I understand how my health information may be used and disclosed</label>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x270d;</span> Signature</div>
+      <div class="field-row"><div class="field-group"><label>Signature <span class="req">*</span></label><div class="signature-area"><canvas id="sig-hipaa" width="700" height="100"></canvas><button type="button" class="sig-clear" onclick="clearSig('sig-hipaa')">Clear</button><div class="sig-label">Sign with finger or stylus above</div></div></div></div>
+      <div class="field-row">
+        <div class="field-group"><label>Printed Name <span class="req">*</span></label><input type="text" name="sig_name" required></div>
+        <div class="field-group"><label>Date <span class="req">*</span></label><input type="date" name="sig_date" required></div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" onclick="saveDraft('hipaa')">Save Draft</button>
+      <button type="submit" class="btn btn-primary">Submit HIPAA Form &#x2192;</button>
+    </div>
+  </form>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- FORM 8: TRANSPORTATION                                         -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="form-view" id="view-transport">
+  <div class="form-header">
+    <button class="back-btn" onclick="showView('dashboard')">&larr;</button>
+    <div><h2>Transportation Authorization</h2><p>Metropolitan Better Living Center, Inc.</p></div>
+  </div>
+  <form class="form-container" id="form-transport" onsubmit="submitForm(event,'transport')">
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f698;</span> Transportation Consent</div>
+      <div class="field-row">
+        <div class="field-group"><label>Participant Name <span class="req">*</span></label><input type="text" name="participant_name" required></div>
+        <div class="field-group"><label>Pick-Up Address <span class="req">*</span></label><input type="text" name="pickup_address" required></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Preferred Pick-Up Time</label><input type="time" name="pickup_time"></div>
+        <div class="field-group"><label>Preferred Drop-Off Time</label><input type="time" name="dropoff_time"></div>
+        <div class="field-group"><label>Special Transportation Needs</label>
+          <select name="transport_needs"><option value="">Select...</option><option>None - ambulatory</option><option>Wheelchair accessible vehicle</option><option>Assistance getting in/out</option><option>Oxygen equipment</option></select>
+        </div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f46a;</span> Authorized Persons for Pick-Up / Drop-Off</div>
+      <div class="field-row">
+        <div class="field-group"><label>Person #1 Name</label><input type="text" name="auth_pickup1"></div>
+        <div class="field-group"><label>Relationship</label><input type="text" name="auth_rel1"></div>
+        <div class="field-group"><label>Phone</label><input type="tel" name="auth_phone1"></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Person #2 Name</label><input type="text" name="auth_pickup2"></div>
+        <div class="field-group"><label>Relationship</label><input type="text" name="auth_rel2"></div>
+        <div class="field-group"><label>Phone</label><input type="tel" name="auth_phone2"></div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x2705;</span> Authorization</div>
+      <div class="check-group">
+        <label class="check-item"><input type="checkbox" name="auth_transport_agree" required> I authorize MBLC to transport the participant to and from the center</label>
+      </div>
+      <div class="check-group" style="margin-top:8px">
+        <label class="check-item"><input type="checkbox" name="auth_field_trips"> I authorize participation in facility-organized outings and field trips</label>
+      </div>
+      <div class="check-group" style="margin-top:8px">
+        <label class="check-item"><input type="checkbox" name="auth_medical_transport"> I authorize transport to medical appointments if pre-arranged</label>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x270d;</span> Signature</div>
+      <div class="field-row"><div class="field-group"><label>Signature <span class="req">*</span></label><div class="signature-area"><canvas id="sig-transport" width="700" height="100"></canvas><button type="button" class="sig-clear" onclick="clearSig('sig-transport')">Clear</button><div class="sig-label">Sign with finger or stylus above</div></div></div></div>
+      <div class="field-row">
+        <div class="field-group"><label>Printed Name <span class="req">*</span></label><input type="text" name="sig_name" required></div>
+        <div class="field-group"><label>Date <span class="req">*</span></label><input type="date" name="sig_date" required></div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" onclick="saveDraft('transport')">Save Draft</button>
+      <button type="submit" class="btn btn-primary">Submit Transport Auth &#x2192;</button>
+    </div>
+  </form>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- FORM 9: PHOTO RELEASE                                          -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="form-view" id="view-photo">
+  <div class="form-header">
+    <button class="back-btn" onclick="showView('dashboard')">&larr;</button>
+    <div><h2>Photo / Media Release Form</h2><p>Metropolitan Better Living Center, Inc.</p></div>
+  </div>
+  <form class="form-container" id="form-photo" onsubmit="submitForm(event,'photo')">
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x1f4f7;</span> Media Consent</div>
+      <div class="field-row">
+        <div class="field-group"><label>Participant Name <span class="req">*</span></label><input type="text" name="participant_name" required></div>
+        <div class="field-group"><label>Date of Birth</label><input type="date" name="dob"></div>
+      </div>
+      <div class="legal-text">
+        I hereby grant Metropolitan Better Living Center, Inc. permission to use photographs, video recordings, and/or audio recordings of the above-named participant for the purposes indicated below. I understand that these materials may be used without compensation and that I may revoke this consent at any time by providing written notice to the center.
+      </div>
+      <p style="font-size:13px;color:var(--gray-600);margin:12px 0 8px;font-weight:600">I consent to the use of photos/media for:</p>
+      <div class="check-group">
+        <label class="check-item"><input type="checkbox" name="photo_internal"> Internal documentation &amp; participant records</label>
+        <label class="check-item"><input type="checkbox" name="photo_newsletter"> Newsletters &amp; mailings</label>
+        <label class="check-item"><input type="checkbox" name="photo_website"> Website &amp; social media</label>
+        <label class="check-item"><input type="checkbox" name="photo_marketing"> Marketing &amp; promotional materials</label>
+        <label class="check-item"><input type="checkbox" name="photo_media"> Local media / press releases</label>
+      </div>
+      <div class="check-group" style="margin-top:16px;padding-top:12px;border-top:1px solid var(--gray-200)">
+        <label class="check-item" style="color:var(--red);font-weight:600"><input type="checkbox" name="photo_decline"> &#x274c; I DO NOT consent to any photo or media use</label>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title"><span class="sec-icon">&#x270d;</span> Signature</div>
+      <div class="field-row"><div class="field-group"><label>Signature <span class="req">*</span></label><div class="signature-area"><canvas id="sig-photo" width="700" height="100"></canvas><button type="button" class="sig-clear" onclick="clearSig('sig-photo')">Clear</button><div class="sig-label">Sign with finger or stylus above</div></div></div></div>
+      <div class="field-row">
+        <div class="field-group"><label>Printed Name <span class="req">*</span></label><input type="text" name="sig_name" required></div>
+        <div class="field-group"><label>Date <span class="req">*</span></label><input type="date" name="sig_date" required></div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" onclick="saveDraft('photo')">Save Draft</button>
+      <button type="submit" class="btn btn-primary">Submit Photo Release &#x2192;</button>
+    </div>
+  </form>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SETTINGS                                                       -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="form-view" id="view-settings">
+  <div class="form-header">
+    <button class="back-btn" onclick="showView('dashboard')">&larr;</button>
+    <div><h2>Portal Settings</h2><p>Configure submission email and form defaults</p></div>
+  </div>
+  <div class="settings-card">
+    <h3>&#x2709; Email Configuration</h3>
+    <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px">All completed forms will be compiled and submitted to this email address.</p>
+    <div class="field-row">
+      <div class="field-group"><label>Submission Email Address <span class="req">*</span></label>
+        <input type="email" id="settings-email" value="" placeholder="intake@mblcenter.com" oninput="saveSettings()">
+      </div>
+      <div class="field-group"><label>CC Email (optional)</label>
+        <input type="email" id="settings-cc" value="" placeholder="director@mblcenter.com" oninput="saveSettings()">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group"><label>Facility Name</label>
+        <input type="text" id="settings-facility" value="Metropolitan Better Living Center, Inc." oninput="saveSettings()">
+      </div>
+      <div class="field-group"><label>Facility Phone</label>
+        <input type="tel" id="settings-phone" value="" placeholder="(XXX) XXX-XXXX" oninput="saveSettings()">
+      </div>
+    </div>
+  </div>
+  <div class="settings-card">
+    <h3>&#x1f4be; Saved Drafts</h3>
+    <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px">Drafts are saved in your browser's local storage on this device.</p>
+    <div id="drafts-list" style="font-size:14px;color:var(--gray-600)">No drafts saved.</div>
+    <button class="btn btn-secondary" style="margin-top:16px" onclick="clearAllDrafts()">Clear All Drafts</button>
+  </div>
+</div>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- JAVASCRIPT                                                     -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<script>
+// ─── View Management ───
+function showView(viewId) {
+  document.querySelectorAll('.form-view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  const view = document.getElementById('view-' + viewId);
+  if (view) { view.classList.add('active'); }
+  const tab = document.querySelector('.nav-tab[data-view="' + viewId + '"]');
+  if (tab) {
+    tab.classList.add('active');
+    tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Init signature canvases in this view
+  setTimeout(() => initSignatures(), 100);
+  // Update progress if applicable
+  updateProgress(viewId);
+}
+
+// ─── Toast ───
+function showToast(message, type = '') {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.className = 'toast show ' + type;
+  setTimeout(() => { toast.className = 'toast'; }, 3500);
+}
+
+// ─── Progress Tracking ───
+function updateProgress(formId) {
+  const form = document.getElementById('form-' + formId);
+  const bar = document.getElementById('prog-' + formId);
+  if (!form || !bar) return;
+  const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+  let filled = 0;
+  inputs.forEach(inp => {
+    if (inp.type === 'checkbox') { if (inp.checked) filled++; }
+    else if (inp.value.trim()) filled++;
+  });
+  const pct = inputs.length > 0 ? Math.round((filled / inputs.length) * 100) : 0;
+  bar.style.width = pct + '%';
+}
+
+// ─── Signature Pad ───
+const sigPads = {};
+
+function initSignatures() {
+  document.querySelectorAll('.signature-area canvas').forEach(canvas => {
+    if (sigPads[canvas.id]) return;
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+    let lastX, lastY;
+
+    function resize() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = 100 * dpr;
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = '100px';
+      ctx.scale(dpr, dpr);
+      ctx.strokeStyle = '#1A202C';
+      ctx.lineWidth = 2;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+    }
+    resize();
+
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const t = e.touches ? e.touches[0] : e;
+      return { x: t.clientX - rect.left, y: t.clientY - rect.top };
+    }
+
+    function start(e) {
+      e.preventDefault();
+      drawing = true;
+      const p = getPos(e);
+      lastX = p.x; lastY = p.y;
+      canvas.dataset.signed = 'true';
+    }
+
+    function move(e) {
+      if (!drawing) return;
+      e.preventDefault();
+      const p = getPos(e);
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(p.x, p.y);
+      ctx.stroke();
+      lastX = p.x; lastY = p.y;
+    }
+
+    function stop() { drawing = false; }
+
+    canvas.addEventListener('mousedown', start);
+    canvas.addEventListener('mousemove', move);
+    canvas.addEventListener('mouseup', stop);
+    canvas.addEventListener('mouseleave', stop);
+    canvas.addEventListener('touchstart', start, { passive: false });
+    canvas.addEventListener('touchmove', move, { passive: false });
+    canvas.addEventListener('touchend', stop);
+
+    sigPads[canvas.id] = { ctx, canvas, resize };
+  });
+}
+
+function clearSig(id) {
+  const pad = sigPads[id];
+  if (pad) {
+    const dpr = window.devicePixelRatio || 1;
+    pad.ctx.clearRect(0, 0, pad.canvas.width / dpr, pad.canvas.height / dpr);
+    pad.canvas.dataset.signed = '';
+  }
+}
+
+// ─── Form Submission ───
+function submitForm(event, formId) {
+  event.preventDefault();
+  const form = document.getElementById('form-' + formId);
+
+  // Check signature
+  const sigCanvas = form.querySelector('.signature-area canvas');
+  if (sigCanvas && !sigCanvas.dataset.signed) {
+    showToast('Please provide your signature before submitting.', 'error');
+    sigCanvas.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  // Collect form data
+  const formData = new FormData(form);
+  const data = {};
+  for (const [key, value] of formData.entries()) {
+    data[key] = value;
+  }
+  // Add checkboxes
+  form.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    data[cb.name] = cb.checked ? 'Yes' : 'No';
+  });
+
+  // Get signature as image
+  if (sigCanvas) {
+    data['signature_image'] = sigCanvas.toDataURL('image/png');
+  }
+
+  // Build email body
+  const email = document.getElementById('settings-email')?.value || '';
+  const cc = document.getElementById('settings-cc')?.value || '';
+  const facility = document.getElementById('settings-facility')?.value || 'Metropolitan Better Living Center, Inc.';
+
+  const formNames = {
+    enrollment: 'Participant Enrollment Form',
+    medical: 'Medical History & Physician Clearance',
+    emergency: 'Emergency Contact & Treatment Authorization',
+    medication: 'Medication Administration Authorization',
+    consent: 'Informed Consent for Services',
+    liability: 'Liability Waiver & Release',
+    hipaa: 'HIPAA Privacy Acknowledgment',
+    transport: 'Transportation Authorization',
+    photo: 'Photo / Media Release'
+  };
+
+  const subject = encodeURIComponent(formNames[formId] + ' — ' + (data.participant_name || data.first_name + ' ' + data.last_name || 'New Submission'));
+
+  let body = formNames[formId] + '\n';
+  body += facility + '\n';
+  body += 'Submitted: ' + new Date().toLocaleString() + '\n';
+  body += '═'.repeat(50) + '\n\n';
+
+  for (const [key, value] of Object.entries(data)) {
+    if (key === 'signature_image') continue;
+    if (!value || value === 'No') continue;
+    const label = key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    body += label + ': ' + value + '\n';
+  }
+
+  body += '\n' + '═'.repeat(50);
+  body += '\nNote: Electronic signature captured and attached to this submission.';
+  body += '\nThis form was submitted electronically via the MBLC Document Portal.';
+
+  const encodedBody = encodeURIComponent(body);
+
+  if (email) {
+    const mailtoLink = 'mailto:' + email + (cc ? '?cc=' + cc + '&' : '?') + 'subject=' + subject + '&body=' + encodedBody;
+    window.location.href = mailtoLink;
+    showToast('Opening email client with form data...', 'success');
+  } else {
+    // No email configured — offer to copy
+    navigator.clipboard.writeText(body).then(() => {
+      showToast('Form data copied to clipboard! Configure email in Settings.', 'success');
+    }).catch(() => {
+      showToast('Please configure a submission email in Settings.', 'error');
+    });
+  }
+
+  // Save as submitted
+  try {
+    const key = 'mblc_submitted_' + formId;
+    const submissions = JSON.parse(localStorage.getItem(key) || '[]');
+    submissions.push({ data, timestamp: new Date().toISOString() });
+    localStorage.setItem(key, JSON.stringify(submissions));
+  } catch(e) {}
+
+  // Clear draft
+  localStorage.removeItem('mblc_draft_' + formId);
+}
+
+// ─── Draft Saving ───
+function saveDraft(formId) {
+  const form = document.getElementById('form-' + formId);
+  const formData = new FormData(form);
+  const data = {};
+  for (const [key, value] of formData.entries()) {
+    data[key] = value;
+  }
+  form.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    data['__cb_' + cb.name] = cb.checked;
+  });
+  localStorage.setItem('mblc_draft_' + formId, JSON.stringify(data));
+  showToast('Draft saved successfully!', 'success');
+}
+
+function loadDraft(formId) {
+  const saved = localStorage.getItem('mblc_draft_' + formId);
+  if (!saved) return;
+  try {
+    const data = JSON.parse(saved);
+    const form = document.getElementById('form-' + formId);
+    if (!form) return;
+    for (const [key, value] of Object.entries(data)) {
+      if (key.startsWith('__cb_')) {
+        const cb = form.querySelector('input[name="' + key.replace('__cb_', '') + '"]');
+        if (cb) cb.checked = value;
+      } else {
+        const input = form.querySelector('[name="' + key + '"]');
+        if (input) input.value = value;
+      }
+    }
+  } catch(e) {}
+}
+
+function clearAllDrafts() {
+  const keys = Object.keys(localStorage).filter(k => k.startsWith('mblc_'));
+  keys.forEach(k => localStorage.removeItem(k));
+  showToast('All drafts cleared.', 'success');
+  updateDraftsList();
+}
+
+function updateDraftsList() {
+  const container = document.getElementById('drafts-list');
+  const keys = Object.keys(localStorage).filter(k => k.startsWith('mblc_draft_'));
+  if (keys.length === 0) {
+    container.innerHTML = 'No drafts saved.';
+    return;
+  }
+  let html = '<ul style="list-style:none;padding:0">';
+  keys.forEach(k => {
+    const name = k.replace('mblc_draft_', '').replace(/_/g, ' ');
+    html += '<li style="padding:6px 0;border-bottom:1px solid var(--gray-200);text-transform:capitalize">&#x1f4be; ' + name + ' (draft)</li>';
+  });
+  html += '</ul>';
+  container.innerHTML = html;
+}
+
+// ─── Settings ───
+function saveSettings() {
+  const settings = {
+    email: document.getElementById('settings-email')?.value || '',
+    cc: document.getElementById('settings-cc')?.value || '',
+    facility: document.getElementById('settings-facility')?.value || '',
+    phone: document.getElementById('settings-phone')?.value || ''
+  };
+  localStorage.setItem('mblc_settings', JSON.stringify(settings));
+}
+
+function loadSettings() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('mblc_settings') || '{}');
+    if (saved.email) document.getElementById('settings-email').value = saved.email;
+    if (saved.cc) document.getElementById('settings-cc').value = saved.cc;
+    if (saved.facility) document.getElementById('settings-facility').value = saved.facility;
+    if (saved.phone) document.getElementById('settings-phone').value = saved.phone;
+  } catch(e) {}
+}
+
+// ─── Progress listener ───
+document.addEventListener('input', function(e) {
+  const form = e.target.closest('form');
+  if (form) {
+    const formId = form.id.replace('form-', '');
+    updateProgress(formId);
+  }
+});
+
+// ─── Init ───
+window.addEventListener('DOMContentLoaded', function() {
+  loadSettings();
+  // Load any saved drafts
+  ['enrollment','medical','emergency','medication','consent','liability','hipaa','transport','photo'].forEach(loadDraft);
+  updateDraftsList();
+  initSignatures();
+
+  // Auto-set today's date on all date fields that are empty
+  document.querySelectorAll('input[name="sig_date"]').forEach(d => {
+    if (!d.value) d.value = new Date().toISOString().split('T')[0];
+  });
+});
+
+// Handle window resize for signature pads
+window.addEventListener('resize', function() {
+  Object.values(sigPads).forEach(pad => pad.resize());
+});
+</script>
+</body>
+</html>
