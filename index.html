@@ -51,7 +51,7 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
 
 body {
   font-family: var(--font-body);
@@ -182,7 +182,7 @@ body::before {
 }
 .dashboard-hero img {
   height: 240px; margin-bottom: 20px;
-  display: block; margin-left: auto; margin-right: auto;
+  transform: translateX(80px);
   filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
 }
 .dashboard-hero h2 {
@@ -520,7 +520,7 @@ body::before {
   .dashboard-hero { padding: 24px 12px 20px; }
   .dashboard-hero h2 { font-size: 20px; }
   .dashboard-hero p { font-size: 13px; }
-  .dashboard-hero img { height: 105px; }
+  .dashboard-hero img { height: 105px; transform: translateX(35px); }
   .form-card { padding: 14px; gap: 10px; }
   .form-header h2 { font-size: 18px; }
   .settings-card { padding: 18px; }
